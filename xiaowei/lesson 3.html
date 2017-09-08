@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style type="text/css">	
+			body{
+				margin:0
+			}
+			.container{
+				margin:20px;
+				padding:20px;
+				background: #eee;
+				border:1px solid black;
+				overflow: hidden;
+				position:relative;
+				
+				
+			}
+			.left{
+				width:200px;
+				float:left;
+				
+				background: white;
+				border: 1px solid black;
+				padding:20px;
+				
+			}	
+			.right{
+				width: 120px;
+				float: right;
+				
+				background: white;
+				border: 1px solid black;
+				padding:20px;
+			} 
+			.center{
+				margin:0 180px auto 260px;
+				background: white;
+				border: 1px solid black;
+				padding:20px;
+			
+			}  
+			.teamlogo{
+				width: 80px;
+				height: 80px;
+				background: #eee;
+				border: #999;
+				padding:20px;
+				text-align: center;
+				float:left;
+			}
+			.left p{
+				  float:left;
+				  margin-left: 5px;
+				  margin-top:0;
+			}
+			.right div{
+				width: 80px;
+				height: 80px;
+				background: #eee;
+				border: #999;
+				padding:20px;
+				text-align: center;
+				float:left;
+				margin-top:15px ;
+			}
+			.right .first{
+				
+				width: 80px;
+				height: 80px;
+				background: #eee;
+				border: #999;
+				padding:20px;
+				text-align: center;
+				margin-top:-5px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left">
+			  <div class="teamlogo">团队logo80*80</div>
+			  <p>团队名称</p>
+			</div>
+			<div class="right">
+				 <div class="first">团队logo80*80</div>
+				  <div >团队logo80*80</div>
+				   <div >团队logo80*80</div>
+				    <div >团队logo80*80</div>
+			</div>
+			<div class="center">
+				<p>下面是该页面的实现思路:</p>
+<p>这里定位使用的是 float，两边分别使用 left 和 right 浮动， 由于这两块是定宽，所以中间的块只需要 margin 设置左右外边距即可。 对文本内容设置 `word-wrap: break-word;` 即可实现宽度缩放兼容。</p>
+<p>对于左浮动块的内部的布局，这里先将 img 块左浮动，使其脱离文档流，再对包含文字的 div 使用 margin-left 使其和图片位于统一高度。</p>
+<p>有几个细节问题:</p>
+<p>1. box-sizing的问题 
+2. 文字的居中和包裹 
+3. 浏览器默认样式的边距重置： `* {margin: 0; padding: 0;}`，否则填不满 
+4. img标签与div层之间会有空隙，图片下方出现空隙，使用display:block 就消除 
+5. 防止溢出是在父div设置 ｀overflow: auto;｀</p>
+			</div>
+		</div>
+	</body>
+</html>

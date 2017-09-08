@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+  <style type="text/css">
+    ul {
+    float: left;
+    margin: 5px;
+    padding: 0px;
+    }
+    li{
+    float: left;
+    margin: 0px 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    list-style: none;
+    background: red;
+
+    }
+
+    .button {
+      background-color: white;
+      border-radius: 5px;
+      border: 1px lightgrey solid;
+    }
+  </style>
+
+<body>
+  <div>
+  <input type="text" placeholder="请输入数字" id="_input"/>
+  <input type="button" value="左侧入" id="leftin" class="button"\>
+  <input type="button" value="右侧入" id="rightin" class="button"\>&nbsp;&nbsp;&nbsp;
+  <input type="button" value="左侧出" id="leftout" class="button"\>
+  <input type="button" value="右侧出" id="rightout" class="button"\>
+ 
+  <div>
+   <ul id="list">
+     <!-- <li>1</li>
+     <li>3</li>
+     <li>5</li>
+     <li>7</li>
+     <li>9</li>
+     <li>11</li> -->
+   </ul>
+  </div>
+ <script type="text/javascript">
+    var text = document.getElementById("_input");
+    var leftin = document.getElementById("leftin");
+    var rightin = document.getElementById("rightin");
+    var leftout = document.getElementById("leftout");
+    var rightout = document.getElementById("rightout");
+    var ulist = document.getElementById("list");
+    
+    init();
+
+    
+    leftin.onclick = function(){
+        var textValue = text.value;
+
+        if(isNumber(textValue)){
+        
+        var newLi = createNewLi(textValue);
+        ulist.insertBefore(newLi,ulist.firstChild);
+       
+      }else{
+        alert("请输入数字");
+      }
+    };
+    leftout.onclick = function(){
+        var deLi = ulist.removeChild(ulist.firstElementChild);       //firstElementChild 排除了空白文本元素的干扰。
+        alert(deLi.innerHTML);
+
+    };
+    rightin.onclick = function(){
+        var textValue = text.value;
+
+        if(isNumber(textValue)){
+        var newLi = createNewLi(textValue);
+        ulist.appendChild(newLi);
+        
+
+    
+    }else{
+        alert("请输入数字");
+      }
+
+    };
+    rightout.onclick = function(){
+      
+      var deLi = ulist.removeChild(ulist.lastElementChild);
+        alert(deLi.innerHTML);
+
+    };
+
+    function isNumber(num){
+       if(num=="")
+        return false;
+      else
+        return !isNaN(num);
+    }
+
+    function createNewLi(value){
+      var li = document.createElement("li");
+      li.innerHTML = value;
+
+      li.onclick = function(){
+        ulist.removeChild(li);
+      }
+
+      return li;
+    }
+  function init(){
+
+    var li1 = createNewLi(40);
+    var li2 = createNewLi(50);
+    var li3 = createNewLi(60);
+    var li4 = createNewLi(70);
+
+    ulist.appendChild(li1);
+    ulist.appendChild(li2);
+    ulist.appendChild(li3);
+    ulist.appendChild(li4);
+
+
+  }
+
+
+</script>
+  
+
+
+</body>
+</html>

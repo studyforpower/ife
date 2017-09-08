@@ -1,0 +1,170 @@
+
+body{
+	margin:0;
+	
+}
+
+/*导航栏样式*/
+.header{
+	width: 100%;
+	height: 60px;
+	background: #333;	
+	position: relative;
+}
+ .title{
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	font-size: 0.8em;
+	margin-left: 10px;
+	color:white
+	
+}
+.nav{
+	 position: absolute;
+	 right:0;
+	 top:50%;
+	 transform: translateY(-50%); 
+}
+.nav ul{
+	margin:0;
+}
+.nav li{
+	float: left;
+    font-weight: bold;
+    margin:0 15px;
+}
+ 
+ /*主体样式*/
+.container{
+	
+	background: #dedede;
+	padding:20px;
+	position:relative;
+}
+.content{
+
+	overflow: hidden;
+}
+
+.article{
+	
+	margin-top:20px;
+	border-width: 1px 3px 3px 1px;
+	border-style: solid;
+	border-color: darkgray;
+    background: white;
+    padding:20px;
+}
+
+.article h3{
+	color:gray;
+}
+.author{
+	color:gray;
+}
+
+/*图片样式*/
+.pictureSet{
+	padding:10px;
+	overflow: hidden;
+}
+.picture{
+	float:left;
+	width:100px;
+	height:100px;
+	padding:10px;
+	border: 1px solid gainsboro;
+	margin-right:25px;
+	margin-top:25px;
+	text-align: center;
+}
+.picture p{
+	margin:0;
+}
+.picture img{
+	width:80px;
+	height:80px;
+	
+}
+
+/*表格样式*/
+table{
+	width:100%;
+	border: 1px solid gray;
+	border-collapse: collapse;
+	 
+}
+th,td{
+	border: 1px solid gray;
+	text-align: left;
+}
+th{
+	background: #333;
+	color:white;
+}
+table .footer{
+	background: #ccc;
+}
+
+/*底部样式*/
+div.footer{
+	width: 100%;
+	height: 60px;
+	background: #1c1c1c;
+	text-align: center;
+	padding-top:20px
+}
+
+/*侧栏样式*/
+
+#sidebar{
+	width: 30%;
+	/*position:absolute;         绝对定位侧栏
+	top:41px;
+	right:20px;*/
+	margin-left: 20px;      
+	margin-top:20px;
+	float:right;                
+	background: white;
+	
+	border-width: 1px 3px 3px 1px;
+	border-style: solid;
+	border-color: darkgray;
+	padding:20px
+}
+#sidebar h3{
+	padding-left:20px;
+	border-left: 3px solid;
+}
+.line{
+	
+	margin: 5px auto 15px 20px ;
+}
+.prompt{
+	font-size: 0.8em;
+	text-align: center;
+	font-style: italic;
+	color:#808080;
+	margin-top:-10px;
+	margin-bottom: 10px;
+}
+.nudge{
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+	vertical-align:top;
+	font-size: 0.8em;
+}
+
+.submitDiv{
+	width: 100%;
+	text-align: center;
+}
+.submitBtn{
+	background: royalblue;
+	width: 90%;
+	height: 40px;
+	border-radius: 15px;
+	color: white;
+}

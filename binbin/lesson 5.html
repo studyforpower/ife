@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+  <style type="text/css">
+    ul {
+      float: left;
+    margin: 5px;
+    padding: 0px;
+    }
+    li{
+    float: left;
+    margin: 0px 1px;
+    width: 30px;
+    /*height: 30px;*/
+    text-align: center;
+    line-height: 30px;
+    list-style: none;
+    background: red;
+
+    }
+
+    .button {
+      background-color: white;
+      border-radius: 5px;
+      border: 1px lightgrey solid;
+    }
+  </style>
+
+<body>
+  <div>
+  <input type="text" placeholder="请输入数字" id="_input"/>
+  <input type="button" value="左侧入" id="leftin" class="button"\>
+  <input type="button" value="右侧入" id="rightin" class="button"\>&nbsp;&nbsp;&nbsp;
+  <input type="button" value="左侧出" id="leftout" class="button"\>
+  <input type="button" value="右侧出" id="rightout" class="button"\>&nbsp;&nbsp;&nbsp;
+  <input type="button" value="冒泡排序" id="sortbybubble" class="button"\>
+ 
+  <div>
+   <ul id="list">
+     
+   </ul>
+  </div>
+ <script type="text/javascript">
+    var text = document.getElementById("_input");
+    var leftin = document.getElementById("leftin");
+    var rightin = document.getElementById("rightin");
+    var leftout = document.getElementById("leftout");
+    var rightout = document.getElementById("rightout");
+    var ulist = document.getElementById("list");
+    var bubble = document.getElementById("sortbybubble");
+
+    var state = [];                              //排序数组序列 
+   
+
+    init();                            
+
+    leftin.onclick = function(){
+        var textValue = text.value;
+        var textNum = parseInt(textValue);
+
+        if(isNumber(textNum)){
+
+        if(ulist.children.length>60){
+          alert("元素超过60个");
+        }
+        else{
+        var newLi = createLi(textNum);
+        ulist.insertBefore(newLi,ulist.firstChild);
+        text.value="";
+        }
+        
+      }else{
+        alert("请输入10~100数字");
+      }
+    };
+    leftout.onclick = function(){
+        var deLi = ulist.removeChild(ulist.firstElementChild);
+        alert(deLi.innerHTML);
+
+    };
+    rightin.onclick = function(){
+        var textValue = text.value;
+        var textNum = parseInt(textValue);
+
+        if(isNumber(textNum)){
+        
+        if(ulist.children.length>60){
+          alert("元素超过60个");
+        }
+        else{
+        var newLi = createLi(textNum);
+
+        ulist.appendChild(newLi);
+        text.value="";
+
+      }
+    }else{
+        alert("请输入10~100数字");
+      }
+
+    };
+    rightout.onclick = function(){
+      
+      var deLi = ulist.removeChild(ulist.lastElementChild);
+        alert(deLi.innerHTML);
+
+    };
+
+    function isNumber(num){                //10~100数字
+    
+         if(!isNaN(num)){
+            if(num>=10&&num<=100)
+              return true;
+            else
+              return false;
+         }
+         else
+          return false;
+    }
+
+
+
+    function init(){
+
+      var arr = [30, 10, 21, 67, 82, 44, 100];
+      for(var i =0;i<arr.length;i++){
+                                 
+        ulist.appendChild(createLi(arr[i]));
+      }
+
+    }
+
+    function createLi(item){
+
+      var newLi = document.createElement("li");
+      setAttribute.call(newLi,item);
+      newLi.onclick = function(){
+
+        var deLi = ulist.removeChild(ulist.lastElementChild);
+        alert(deLi.innerHTML);
+      }
+      return newLi;
+
+    }
+    function setAttribute(item){
+      
+      // li.itemValue = item;
+      // li.innerHTML = item;
+      // li.style.background="red";
+      // li.style.height = item*3+"px";
+      // li.style.lineHeight = item*3+"px";
+
+      this.itemValue = item;
+      this.innerHTML = item;
+      this.style.background="red";
+      this.style.height = item*3+"px";
+      this.style.lineHeight = item*3+"px";
+
+
+    }
+
+   bubble.onclick = function(){
+      
+      processSort(bubbleSort);            //将函数对象作为参数回调，此例使用冒泡排序      
+
+    };
+    function processSort(callback){        //排序过程
+        
+        var arr= [];
+        ulist = document.getElementById("list");
+        var children = ulist.children;
+        for(var i=0 ; i<children.length;i++){
+          arr.push(children[i].itemValue);
+        }
+        
+        callback.call(this,arr);    //this是window对象
+        draw();       
+
+    }
+
+    function bubbleSort(arr){
+      
+      for(var i =0;i<arr.length;i++)
+        for(var j=0;j<arr.length-i-1;j++){
+          if(arr[j]>arr[j+1]){
+            var temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+          }
+          state.push(JSON.parse(JSON.stringify(arr)));         //state队列是个动态的结构，如果直接Push(arr)会得到每项都是最终状态arr的结果
+        }
+    }
+    function draw(){
+
+      var current = state.shift()||[];
+      var bars = ulist.children;
+      for(var i=0;i<current.length;i++)
+        setAttribute.call(bars[i],current[i]);
+
+      if(state.length>0)
+        setTimeout(draw,200);
+
+    }
+</script>
+  
+
+
+</body>
+</html>
